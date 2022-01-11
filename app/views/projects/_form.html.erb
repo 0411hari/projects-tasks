@@ -10,23 +10,36 @@
       </ul>
     </div>
   <% end %>
+  <div class="row">
+    <div class=" col-sm-4 form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <div class="col-sm-4 form-group">
+      <%= form.label :description %>
+      <%= form.text_area :description , class: "form-control"%>
+    </div>
   </div>
+  <div class="row mb-3">
+    <div class=" col-sm-4 form-group">
+      <%= form.label :project_type %>
+      <%= form.text_field :project_type, class: "form-control" %>
+    </div>
+    <div class=" col-sm-4 form-group">
+      <%= form.label :start_date %>
+      <%= form.date_field :start_date, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+    <div class="col-sm-4 form-group">
+      <%= form.label :end_date %>
+      <%= form.date_field :end_date, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-primary"%>
   </div>
 <% end %>

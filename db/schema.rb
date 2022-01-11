@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_10_132717) do
+ActiveRecord::Schema.define(version: 2022_01_11_130807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2022_01_10_132717) do
     t.datetime "end_date"
     t.string "task_category"
     t.string "task_priority"
-    t.integer "task_progess"
+    t.string "task_progess"
     t.bigint "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

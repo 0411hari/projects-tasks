@@ -11,19 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div class="card-body bg-3">
+    <div class="from-group">
+    <%= f.label :name %><br/>
+    <%= f.text_field :name , class: "form-control"%>
   </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+  <div class="from-group">
+    <%= f.label :description %><br/>
+    <%= f.text_area :description , class: "form-control"%>
   </div>
-  <div class="field">
-    <%= f.label :project %><br />
-    <%= f.text_field :project %>
+  <div class="from-group">
+    <%= f.label :task_progess %><br/>
+    <%= f.select :task_progess, Task::STATUS_OPTIONS , class: "form-control"%>
+  </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class:"btn btn-primary" %>
   </div>
 <% end %>

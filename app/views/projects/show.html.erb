@@ -1,19 +1,106 @@
-<p id="notice"><%= notice %></p>
+<%= link_to 'Back', projects_path, class: "btn btn-light mb-4" %>
+<div class="card">
+  <div class="card-body">
+    <h1 class="card-title d-flex justify-content-between mb-4">
+          <span><%= @project.name%></span>
+          <div>
+            <%= link_to 'Edit', edit_project_path(@project), class: "btn btn-warning" %>
+            <%= link_to 'Destroy', @project, method: :delete,class: "btn btn-danger",data: { confirm: 'Are you sure?' } %>
+          </div>
+    </h1>
+    <div class="mb-4">
+      <h6>New task</h6>
+      <%= form_for([@task.project, @task]) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
+  <div class="input-group">
+    <%= f.hidden_field :task_progess, value: "1"%>
+    <%= f.text_field :name, class: "form-control", placeholder: "Enter the task name"%>
+    <div class="input-group-append">
+      <%= f.submit  class: "btn btn-primary"%>
+    </div>
+    </div>
+    <% end %>
+    </div>
+    
+    <h4>Tasks</h4>
+    <% @project.tasks.each do |task|%>
+    <% if task.persisted? %>
+      <div class="card">
+        <div class="card-body mb-3"> 
+          <div class="d-flex justify-content-between mb-4">
+          <span class=" badge bg-<%= task.button_color %> mb-3"><%= task.task_progess %></span>
+            <div>
+              <%= link_to 'Edit', edit_project_task_path(task.project, task), class: "btn btn-light btn-sm" %>
+              <%= link_to 'Destroy', [task.project, task], method: :delete,class: "btn btn-secondary btn-sm",data: { confirm: 'Are you sure?' } %>
+            </div>
+            
+          </div>
+          <h5 class="card-title ">
+            <span><%=task.name%></span>
+          </h5>
+           <p><%=task.description%></p>
+        </div>
+      </div>
+      <% end%>
+      <% end%> 
 
-<p>
-  <strong>User:</strong>
-  <%= @project.user_id %>
-</p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+    
+  </div>
+  
+</div>
+
+
+ 
+<%#= link_to 'Back', projects_path %>
+<!-- <hr>
+<
+<hr>
+<h1>Listing tasks</h1> -->
+
+<!-- <table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Project</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @project.tasks.each do |task| %>
+  <% if task.persisted? %>
+  <tr>
+    <td><%= task.name %></td>
+    <td><%= task.description %></td>
+    <td><%= task.project.id %></td>
+    <td><%= link_to 'Show', [task.project, task] %></td>
+    <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
+    <td><%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+<% end %>
+</table> -->
+
+<br />
+
+<%#= link_to 'New Task', new_project_task_path(@project.id) %>
+
+
+<%#= render 'tasks/form' %>
+
+<%#= link_to 'Back', project_tasks_path(@task.project) %>
+
+
+
